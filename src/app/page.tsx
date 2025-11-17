@@ -50,13 +50,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Steam Heatmap Dashboard */}
-      <SteamGauge />
-
-      {/* Intention Tree Search */}
-      <IntentionSearch />
-
-      {/* Information Grid */}
+      {/* Quick Navigation */}
       <section className="mb-16">
         <h2 className="text-3xl font-bold text-center text-white mb-8">快速导航</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -70,6 +64,12 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* Steam Heatmap Dashboard */}
+      <SteamGauge />
+
+      {/* Intention Tree Search */}
+      <IntentionSearch />
 
       {/* Video & Reddit Section */}
       <section className="mb-16">
