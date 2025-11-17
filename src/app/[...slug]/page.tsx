@@ -3,6 +3,7 @@ import Link from 'next/link'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import matter from 'gray-matter'
+import { marked } from 'marked'
 
 interface PageProps {
   params: Promise<{
@@ -58,6 +59,9 @@ export default async function ContentPage({ params }: PageProps) {
 
   const { frontmatter, content } = result
 
+  // Parse Markdown to HTML
+  const htmlContent = await marked(content)
+
   return (
     <div className="container mx-auto py-12 px-4">
       <article className="max-w-4xl mx-auto">
@@ -105,7 +109,7 @@ export default async function ContentPage({ params }: PageProps) {
         <div className="prose prose-invert prose-lg max-w-none">
           <div
             className="text-gray-300 leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: content.replace(/\n/g, '<br />') }}
+            dangerouslySetInnerHTML={{ __html: htmlContent }}
           />
         </div>
 
