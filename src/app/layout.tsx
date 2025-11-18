@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Where Winds Meet Info Team" }],
   creator: "Where Winds Meet Info",
   publisher: "Where Winds Meet Info",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://wherewindsmeet.info'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://wherewindsmeetgame.net'),
   alternates: {
     canonical: '/',
   },

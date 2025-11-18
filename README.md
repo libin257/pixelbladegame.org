@@ -2,7 +2,7 @@
 
 > Your complete Wuxia RPG companion for *Where Winds Meet* - Interactive build tools, boss guides, and comprehensive walkthroughs for mastering the martial arts world.
 
-🌐 **Live Site**: [https://wherewindsmeet.info](https://wherewindsmeet.info)
+🌐 **Live Site**: [https://wherewindsmeetgame.net](https://wherewindsmeetgame.net)
 
 ---
 
@@ -44,8 +44,8 @@ Where Winds Meet Info is a comprehensive fan-made guide website dedicated to hel
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/wherewindsmeet.info.git
-cd wherewindsmeet.info
+git clone https://github.com/yourusername/wherewindsmeetgame.net.git
+cd wherewindsmeetgame.net
 
 # Install dependencies
 npm install
@@ -222,10 +222,10 @@ The codebase itself is open for community contributions.
 
 ## 🔗 Links
 
-- **Live Site**: [https://wherewindsmeet.info](https://wherewindsmeet.info)
-- **Build Tier List**: [https://wherewindsmeet.info/builds/best-builds](https://wherewindsmeet.info/builds/best-builds)
-- **Boss Guides**: [https://wherewindsmeet.info/bosses](https://wherewindsmeet.info/bosses)
-- **Getting Started**: [https://wherewindsmeet.info/guides/class-overview](https://wherewindsmeet.info/guides/class-overview)
+- **Live Site**: [https://wherewindsmeetgame.net](https://wherewindsmeetgame.net)
+- **Build Tier List**: [https://wherewindsmeetgame.net/builds/best-builds](https://wherewindsmeetgame.net/builds/best-builds)
+- **Boss Guides**: [https://wherewindsmeetgame.net/bosses](https://wherewindsmeetgame.net/bosses)
+- **Getting Started**: [https://wherewindsmeetgame.net/guides/class-overview](https://wherewindsmeetgame.net/guides/class-overview)
 
 ---
 

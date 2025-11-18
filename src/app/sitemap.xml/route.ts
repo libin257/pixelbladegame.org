@@ -26,7 +26,7 @@ export async function GET() {
   const contentDir = path.join(process.cwd(), 'src/content')
   const allPaths = await getAllMdxFiles(contentDir)
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wherewindsmeet.info'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wherewindsmeetgame.net'
   const currentDate = new Date().toISOString().split('T')[0]
 
   const urls = [

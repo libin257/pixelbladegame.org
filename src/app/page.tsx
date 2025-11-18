@@ -9,30 +9,30 @@ export default function HomePage() {
     '@graph': [
       {
         '@type': 'WebSite',
-        '@id': 'https://wherewindsmeet.info/#website',
-        url: 'https://wherewindsmeet.info',
+        '@id': 'https://wherewindsmeetgame.net/#website',
+        url: 'https://wherewindsmeetgame.net',
         name: 'Where Winds Meet Info',
         description: 'Complete Wuxia RPG guide and wiki for Where Winds Meet featuring character builds, boss strategies, weapon tier lists, and full walkthrough.',
         publisher: {
-          '@id': 'https://wherewindsmeet.info/#organization'
+          '@id': 'https://wherewindsmeetgame.net/#organization'
         },
         potentialAction: {
           '@type': 'SearchAction',
           target: {
             '@type': 'EntryPoint',
-            urlTemplate: 'https://wherewindsmeet.info/search?q={search_term_string}'
+            urlTemplate: 'https://wherewindsmeetgame.net/search?q={search_term_string}'
           },
           'query-input': 'required name=search_term_string'
         }
       },
       {
         '@type': 'Organization',
-        '@id': 'https://wherewindsmeet.info/#organization',
+        '@id': 'https://wherewindsmeetgame.net/#organization',
         name: 'Where Winds Meet Info',
-        url: 'https://wherewindsmeet.info',
+        url: 'https://wherewindsmeetgame.net',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://wherewindsmeet.info/images/logo.png',
+          url: 'https://wherewindsmeetgame.net/images/logo.png',
           width: 512,
           height: 512
         },
@@ -40,14 +40,14 @@ export default function HomePage() {
       },
       {
         '@type': 'WebPage',
-        '@id': 'https://wherewindsmeet.info/#webpage',
-        url: 'https://wherewindsmeet.info',
+        '@id': 'https://wherewindsmeetgame.net/#webpage',
+        url: 'https://wherewindsmeetgame.net',
         name: 'Where Winds Meet - Complete Wuxia RPG Guide & Wiki',
         isPartOf: {
-          '@id': 'https://wherewindsmeet.info/#website'
+          '@id': 'https://wherewindsmeetgame.net/#website'
         },
         about: {
-          '@id': 'https://wherewindsmeet.info/#organization'
+          '@id': 'https://wherewindsmeetgame.net/#organization'
         },
         description: 'Master Where Winds Meet with our comprehensive guide featuring character builds, boss strategies, weapon tier lists, PC performance guides, and complete walkthrough.'
       }

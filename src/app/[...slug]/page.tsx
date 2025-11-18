@@ -63,7 +63,7 @@ export default async function ContentPage({ params }: PageProps) {
   const htmlContent = await marked(content)
 
   // Structured data for SEO
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wherewindsmeet.info'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wherewindsmeetgame.net'
   const articleUrl = `${baseUrl}/${slug.join('/')}`
 
   const structuredData = {

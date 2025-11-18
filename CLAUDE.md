@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Where Winds Meet Info is a comprehensive fan-made guide website for the game *Where Winds Meet*. Built with Next.js 15 (App Router), it features 78+ SEO-optimized MDX pages, interactive build tools, boss strategies, weapon tier lists, and community content aggregation.
 
-**Live Site**: https://wherewindsmeet.info
+**Live Site**: https://wherewindsmeetgame.net
 
 ## Development Commands
 
@@ -207,7 +207,7 @@ Root `layout.tsx` includes:
 Required in `.env.local`:
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://wherewindsmeet.info
+NEXT_PUBLIC_SITE_URL=https://wherewindsmeetgame.net
 NEXT_PUBLIC_SITE_NAME=Where Winds Meet
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX              # Google Analytics
 NEXT_PUBLIC_CLARITY_ID=XXXXXXXXXX           # Microsoft Clarity
