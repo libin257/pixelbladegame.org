@@ -64,10 +64,10 @@ export default async function NewsPage() {
 
       <div className="flex flex-col justify-between items-center mb-6">
         <h1 className="mx-auto max-w-3xl text-3xl font-bold lg:text-5xl tracking-tight text-white drop-shadow-lg">
-          <span className="pt-10">News</span>
+          <span className="pt-10">Winter Burrow News</span>
         </h1>
         <h2 className="mx-auto max-w-[700px] md:text-xl my-6 text-gray-200 drop-shadow-md">
-          Latest news, updates, and patch notes
+          Latest updates, patch notes, and announcements
         </h2>
       </div>
 
@@ -76,12 +76,12 @@ export default async function NewsPage() {
           {articles.map((article, index) => (
             <div
               key={index}
-              className="rounded-lg border text-card-foreground shadow-sm bg-black/50 backdrop-blur-md border-gray-700 hover:border-[#25AB2B] hover:shadow-2xl hover:shadow-[#25AB2B]/20 transition-all"
+              className="rounded-lg border text-card-foreground shadow-sm bg-black/50 backdrop-blur-md border-gray-700 hover:border-[#F4B860] hover:shadow-2xl hover:shadow-[#F4B860]/20 transition-all"
             >
               <div className="flex flex-col space-y-1.5 p-6">
                 <Link
                   href={`/news/${article.slug}`}
-                  className="text-[#25AB2B] hover:text-[#1E8923] transition-colors inline-flex items-center gap-1"
+                  className="text-[#F4B860] hover:text-[#D99B3C] transition-colors inline-flex items-center gap-1"
                 >
                   <h3 className="text-2xl font-semibold leading-none tracking-tight mr-1 text-gray-100">
                     {article.title}

@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-shadcn",
+  "name": "winter-burrow-info",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -10,7 +10,17 @@
     "lint": "bunx tsc --noEmit && next lint",
     "format": "bunx biome format --write",
     "csv:json": "node scripts/csv-to-json.js",
-    "generate:mdx": "node scripts/generate-mdx-from-csv.js"
+    "generate:mdx": "node scripts/generate-mdx-from-csv.js",
+    "generate:articles": "node scripts/generate-articles-from-xlsx.js",
+    "preview:xlsx": "node scripts/preview-xlsx.js",
+    "test:urls": "bash scripts/test-urls.sh",
+    "fix:paths": "bash scripts/fix-mdx-paths.sh",
+    "fix:markdown": "bash scripts/fix-markdown-wrapper.sh",
+    "fetch:images": "node scripts/fetch-images.cjs",
+    "fetch:youtube": "node scripts/fetch-youtube.cjs",
+    "fetch:reddit": "node scripts/fetch-reddit.cjs",
+    "fetch:sheets": "node scripts/fetch-sheets.cjs",
+    "fetch:all": "bash scripts/build-all-data.sh"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
@@ -39,6 +49,7 @@
     "eslint-config-next": "15.1.7",
     "postcss": "^8.5.3",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "xlsx": "^0.18.5"
   }
 }

@@ -17,8 +17,65 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Rue Valley - Complete Guide & Walkthrough Portal",
-  description: "Your ultimate resource for the time loop RPG Rue Valley - Complete walkthrough, character guides, intention tree search, and community insights.",
+  title: {
+    default: "Winter Burrow - Complete Survival Guide & Wiki | Cozy Survival Tips",
+    template: "%s | Winter Burrow Info"
+  },
+  description: "Master Winter Burrow with our comprehensive guide featuring beginner survival tips, interactive warmth calculator, crafting recipe finder, full walkthrough, and platform reviews. Your ultimate companion for conquering the frozen wilderness.",
+  keywords: [
+    "Winter Burrow",
+    "Winter Burrow guide",
+    "Winter Burrow wiki",
+    "survival game guide",
+    "warmth calculator",
+    "crafting recipes",
+    "beginner tips",
+    "walkthrough",
+    "game guide"
+  ],
+  authors: [{ name: "Winter Burrow Info Team" }],
+  creator: "Winter Burrow Info",
+  publisher: "Winter Burrow Info",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://winterburrow.info'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: '/',
+    title: 'Winter Burrow - Complete Survival Guide & Wiki',
+    description: 'Master Winter Burrow with our comprehensive guide featuring beginner survival tips, interactive warmth calculator, crafting recipes, and full walkthrough.',
+    siteName: 'Winter Burrow Info',
+    images: [
+      {
+        url: '/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Winter Burrow Survival Guide',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Winter Burrow - Complete Survival Guide & Wiki',
+    description: 'Master Winter Burrow with beginner tips, warmth calculator, crafting recipes, and full walkthrough.',
+    images: ['/images/og-image.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+  },
 };
 
 export default function RootLayout({
@@ -73,10 +130,10 @@ export default function RootLayout({
         <ClientBody>
           <div
             className="relative min-h-screen bg-cover bg-center bg-fixed"
-            style={{ backgroundImage: 'url(/images/backgrounds/hero-bg.jpg)' }}
+            style={{ backgroundImage: 'url(/images/backgrounds/winter-night.png)' }}
           >
             <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
-            <div className="relative z-10">
+            <div className="relative z-10 flex flex-col min-h-screen">
               <Header />
               <main className="flex-1">
                 {children}

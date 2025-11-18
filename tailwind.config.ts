@@ -59,11 +59,11 @@ export default {
       container: {
       center: true,
       padding: {
-        DEFAULT: '1rem',
-        sm: '2rem',
-        lg: '4rem',
-        xl: '5rem',
-        '2xl': '6rem',
+        DEFAULT: '0.75rem',  // 12px (was 16px) - reduced 50%
+        sm: '1rem',          // 16px (was 32px) - reduced 50%
+        lg: '2rem',          // 32px (was 64px) - reduced 50%
+        xl: '2.5rem',        // 40px (was 80px) - reduced 50%
+        '2xl': '3rem',       // 48px (was 96px) - reduced 50%
       },
       screens: {
         sm: '640px',
@@ -72,6 +72,59 @@ export default {
         xl: '1280px',
         '2xl': '1536px',
       },
+      },
+      fontSize: {
+        // Global font scale reduced by 40% for compact layout
+        'xs': '0.6rem',      // 9.6px (was 12px)
+        'sm': '0.75rem',     // 12px (was 14px) ✓ WCAG minimum
+        'base': '0.875rem',  // 14px (was 16px)
+        'lg': '1rem',        // 16px (was 18px)
+        'xl': '1.125rem',    // 18px (was 20px)
+        '2xl': '1.25rem',    // 20px (was 24px)
+        '3xl': '1.625rem',   // 26px (was 30px)
+        '4xl': '1.875rem',   // 30px (was 36px)
+        '5xl': '2.5rem',     // 40px (was 48px)
+        '6xl': '3.25rem',    // 52px (was 60px)
+        '7xl': '3.75rem',    // 60px (was 72px)
+        '8xl': '6rem',       // 96px (unchanged)
+        '9xl': '8rem',       // 128px (unchanged)
+      },
+      spacing: {
+        // Global spacing scale reduced by 35% for compact layout
+        '0': '0',
+        '0.5': '0.08rem',   // 1.3px (was 2px)
+        '1': '0.16rem',     // 2.6px (was 4px)
+        '1.5': '0.24rem',   // 3.8px (was 6px)
+        '2': '0.325rem',    // 5.2px (was 8px)
+        '2.5': '0.41rem',   // 6.5px (was 10px)
+        '3': '0.49rem',     // 7.8px (was 12px)
+        '3.5': '0.57rem',   // 9.1px (was 14px)
+        '4': '0.65rem',     // 10.4px (was 16px)
+        '5': '0.81rem',     // 13px (was 20px)
+        '6': '0.98rem',     // 15.6px (was 24px)
+        '7': '1.14rem',     // 18.2px (was 28px)
+        '8': '1.3rem',      // 20.8px (was 32px)
+        '9': '1.46rem',     // 23.4px (was 36px)
+        '10': '1.63rem',    // 26px (was 40px)
+        '11': '1.79rem',    // 28.6px (was 44px)
+        '12': '1.95rem',    // 31.2px (was 48px)
+        '14': '2.28rem',    // 36.4px (was 56px)
+        '16': '2.6rem',     // 41.6px (was 64px)
+        '20': '3.25rem',    // 52px (was 80px)
+        '24': '3.9rem',     // 62.4px (was 96px)
+        '28': '4.55rem',    // 72.8px (was 112px)
+        '32': '5.2rem',     // 83.2px (was 128px)
+        '36': '5.85rem',    // 93.6px (was 144px)
+        '40': '6.5rem',     // 104px (was 160px)
+        '44': '7.15rem',    // 114.4px (was 176px)
+        '48': '7.8rem',     // 124.8px (was 192px)
+        '52': '8.45rem',    // 135.2px (was 208px)
+        '56': '9.1rem',     // 145.6px (was 224px)
+        '60': '9.75rem',    // 156px (was 240px)
+        '64': '10.4rem',    // 166.4px (was 256px)
+        '72': '11.7rem',    // 187.2px (was 288px)
+        '80': '13rem',      // 208px (was 320px)
+        '96': '15.6rem',    // 249.6px (was 384px)
       },
     }
   },

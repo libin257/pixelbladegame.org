@@ -1,22 +1,23 @@
-# Rue Valley - Complete Guide & Walkthrough Portal
+# Winter Burrow Info
 
-> Your ultimate resource for the time loop RPG *Rue Valley* - Complete walkthrough, character guides, intention tree search, and community insights.
+> Your complete survival companion for *Winter Burrow* - Interactive tools, crafting guides, and comprehensive walkthroughs for mastering the frozen wilderness.
 
-🌐 **Live Site**: [https://ruevalley.org](https://ruevalley.org)
+🌐 **Live Site**: [https://winterburrow.info](https://winterburrow.info)
 
 ---
 
 ## 📖 About This Project
 
-Rue Valley Portal is a comprehensive fan website dedicated to helping players navigate the complex time loop mechanics of *Rue Valley*, the narrative RPG by Emotional Mecha. The site features:
+Winter Burrow Info is a comprehensive fan-made guide website dedicated to helping players survive and thrive in *Winter Burrow*, the cozy survival game. The site features:
 
-- ✅ **Complete Walkthrough** - Step-by-step guide for all 47-minute loops
-- ✅ **Intention Tree Search** - Fuzzy search for all intention tasks with Loop/NPC filtering
-- ✅ **Steam Heatmap Dashboard** - Real-time player statistics and review metrics
-- ✅ **Character Profiles** - Psychological analysis of Eugene, Dr. Finck, Anitta, and more
-- ✅ **160+ SEO-optimized guides** - Covering every aspect of the game
+- ✅ **Warmth Calculator** - Interactive tool to calculate exact survival time based on clothing and temperature zones
+- ✅ **Crafting Recipe Finder** - Real-time material-based filtering with station categorization
+- ✅ **Beginner's Guide** - 3-minute quick start survival tips
+- ✅ **Interactive Map** - Resource locations and zone navigation
+- ✅ **Complete Walkthrough** - Full game progression guides
+- ✅ **70+ SEO-optimized pages** - Covering guides, reviews, resources, survival mechanics, and more
 - ✅ **Community Hub** - Curated YouTube videos and Reddit discussions
-- ✅ **Price Tracking** - Steam and Nintendo Switch pricing information
+- ✅ **Multi-platform Reviews** - Steam, Nintendo Switch, and price tracking
 
 ---
 
@@ -25,9 +26,8 @@ Rue Valley Portal is a comprehensive fan website dedicated to helping players na
 - **Framework**: Next.js 15 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
-- **UI Components**: Shadcn/ui
-- **Data Visualization**: Recharts
-- **Search**: Fuse.js (fuzzy search)
+- **Data Visualization**: Warmth matrix heatmap with duration calculations
+- **Search**: Material-based recipe filtering
 - **Video Embeds**: lite-youtube-embed
 - **Content**: MDX + gray-matter
 - **Deployment**: Vercel
@@ -45,8 +45,8 @@ Rue Valley Portal is a comprehensive fan website dedicated to helping players na
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/ruevalley.org.git
-cd ruevalley.org
+git clone https://github.com/yourusername/winterburrow.info.git
+cd winterburrow.info
 
 # Install dependencies
 npm install
@@ -74,39 +74,50 @@ npm run start
 ```
 ├── public/
 │   ├── data/
-│   │   ├── steamspy.json          # Auto-generated Steam statistics
-│   │   └── intentions.json         # Intention tree data
-│   └── images/                     # Static images
+│   │   ├── warmth-matrix.json      # Warmth duration data by temperature
+│   │   ├── recipes.json             # Crafting recipes database
+│   │   └── clothing.json            # Clothing items and warmth stats
+│   └── images/
+│       ├── backgrounds/             # Site background images
+│       ├── steam/                   # Steam promotional images
+│       └── screenshots/             # Game screenshots
 ├── src/
 │   ├── app/
-│   │   ├── page.tsx                # Homepage
-│   │   ├── [...slug]/page.tsx      # Dynamic MDX page routes
-│   │   └── sitemap.xml/route.ts    # Dynamic sitemap generator
+│   │   ├── page.tsx                 # Homepage with embedded tools
+│   │   ├── warmth-tool/page.tsx     # Full warmth calculator page
+│   │   ├── crafting/page.tsx        # Full recipe finder page
+│   │   ├── [...slug]/page.tsx       # Dynamic MDX page routes
+│   │   └── sitemap.xml/route.ts     # Dynamic sitemap generator
 │   ├── components/
-│   │   ├── Header.tsx              # Site navigation
-│   │   ├── Footer.tsx              # Site footer
-│   │   └── rue-valley/             # Rue Valley-specific components
-│   │       ├── SteamGauge.tsx      # Steam heatmap dashboard
-│   │       ├── IntentionSearch.tsx # Intention tree search tool
-│   │       ├── VideoSection.tsx    # YouTube video embeds
-│   │       └── RedditSection.tsx   # Reddit discussions
-│   ├── content/                    # 160+ MDX content files
-│   │   ├── review/
-│   │   ├── buy/
-│   │   ├── guide/
-│   │   ├── technical/
-│   │   ├── community/
-│   │   └── info/
-│   ├── data/
-│   │   ├── videos.ts               # YouTube video data
-│   │   └── reddit.ts               # Reddit post data
-│   └── types/                      # TypeScript type definitions
+│   │   ├── Header.tsx               # Site navigation
+│   │   ├── Footer.tsx               # Site footer
+│   │   ├── warmth/
+│   │   │   └── WarmthCalculator.tsx # Interactive warmth tool
+│   │   └── crafting/
+│   │       └── RecipeFinder.tsx     # Interactive recipe finder
+│   ├── content/                     # 70+ MDX content files
+│   │   ├── guides/                  # Beginner guides and walkthroughs
+│   │   ├── survival/                # Warmth, hunger, stamina mechanics
+│   │   ├── resources/               # Material guides (granite, pinewood, etc.)
+│   │   ├── crafting/                # Crafting guides and tool tutorials
+│   │   ├── reviews/                 # Platform reviews and ratings
+│   │   ├── community/               # Reddit highlights and mods
+│   │   ├── news/                    # Patch notes and updates
+│   │   ├── platforms/               # Steam, Switch platform guides
+│   │   ├── faq/                     # FAQ and troubleshooting
+│   │   └── quests/                  # Quest walkthroughs
+│   └── data/
+│       ├── videos.ts                # YouTube video data
+│       └── reddit.ts                # Reddit post data
 ├── scripts/
-│   ├── fetch-steam.js              # SteamSpy API data fetcher
-│   ├── csv-to-json.js              # SEO matrix processor
-│   └── generate-mdx-from-csv.js    # MDX file generator
+│   ├── fetch-images.cjs             # Image asset fetcher
+│   ├── fetch-youtube.cjs            # YouTube data fetcher
+│   ├── fetch-reddit.cjs             # Reddit data fetcher
+│   ├── test-urls.sh                 # URL accessibility testing
+│   └── generate-articles-from-xlsx.js # Content generation from Excel matrix
 └── tools/
     └── demand/                      # Project requirements & design docs
+        └── winter_burrow_content_matrix.xlsx # Content structure definition
 ```
 
 ---
@@ -115,72 +126,86 @@ npm run start
 
 ```bash
 # Development
-npm run dev                  # Start dev server with Turbopack
-npm run lint                 # Run ESLint + TypeScript checks
+npm run dev                  # Start dev server
+npm run lint                 # Run TypeScript + ESLint checks
 npm run format               # Format code with Biome
 
 # Production
-npm run build                # Build for production (includes prebuild)
+npm run build                # Build for production
 npm run start                # Start production server
-npm run prebuild             # Fetch Steam data before build
 
 # Data Generation
-npm run fetch:steam          # Fetch latest Steam statistics
-npm run csv:json             # Convert SEO matrix CSV to JSON
-npm run generate:mdx         # Generate 160+ MDX pages from CSV
+npm run fetch:youtube        # Fetch latest YouTube videos
+npm run fetch:reddit         # Fetch Reddit discussions
+npm run fetch:images         # Download game images
+npm run fetch:sheets         # Fetch Google Sheets data
+npm run fetch:all            # Run all data fetchers
+
+# Content Generation
+npm run generate:articles    # Generate MDX pages from Excel matrix
+npm run preview:xlsx         # Preview Excel content structure
+
+# Testing
+npm run test:urls            # Test all page URLs for accessibility
 ```
 
 ---
 
 ## 🎨 Key Features
 
-### 1. **Steam Heatmap Dashboard**
+### 1. **Warmth Calculator**
 
-Real-time visualization of:
-- Player review percentage (good vs. bad)
-- Estimated player count
-- Current Steam price
-- Data freshness indicator
+Interactive survival time calculator with:
+- Clothing item selection with warmth values
+- Temperature zone selector (-10°C to 10°C)
+- Real-time duration calculations
+- Complete warmth matrix heatmap
+- Equipment slot tracking (5 slots)
+- Safety threshold indicators
 
-Uses SteamSpy API with automatic fetching during build time.
+Uses JSON data with precalculated durations for all temperature/clothing combinations.
 
-### 2. **Intention Tree Search**
+### 2. **Crafting Recipe Finder**
 
-Interactive search tool with:
-- Fuzzy search across intention names, NPCs, prerequisites, and rewards
-- Loop number filtering (Loop 1-20)
-- NPC-based filtering
-- One-click copy-to-clipboard functionality
+Smart material-based filtering with:
+- Material availability selection
+- Crafting station filtering (Handcraft, Workbench, Advanced Workbench, Kitchen)
+- Search by item name
+- Real-time craftable recipe highlighting
+- Missing material indicators
+- Station color coding
 
-Powered by Fuse.js with 300ms search delay for optimal performance.
+Powered by client-side filtering with instant results.
 
-### 3. **160+ SEO-Optimized Pages**
+### 3. **70+ SEO-Optimized Pages**
 
-Automatically generated MDX pages covering:
-- Complete loop-by-loop walkthroughs
-- Character guides and endings
-- Technical specs and system requirements
-- Purchase guides and price history
-- Bug fixes and patch notes
+Automatically generated and manually curated MDX pages covering:
+- Beginner survival guides
+- Resource gathering locations
+- Crafting system tutorials
+- Warmth and hunger mechanics
+- Quest walkthroughs
+- Platform reviews and pricing
+- Community mods and tools
 
 Each page includes:
 - Structured frontmatter (title, description, keywords)
-- Breadcrumb navigation
-- Related article recommendations
-- External reference links
+- Responsive layout with dark theme
+- Related article links
+- SEO metadata and OpenGraph tags
 
 ### 4. **Dynamic Sitemap**
 
-Automatically generates `sitemap.xml` with all 160+ pages, optimized for search engines.
+Automatically generates `sitemap.xml` with all 70+ pages, optimized for search engines and updated on every build.
 
 ---
 
 ## 📊 Data Sources
 
-- **Steam Statistics**: [SteamSpy API](https://steamspy.com/)
-- **Walkthrough Data**: Scraped from [IntoIndieGames](https://intoindiegames.com/walkthrough-hub/rue-valley-complete-walkthrough-all-tasks-and-intentions/)
-- **Community Content**: Curated from Reddit r/RueValleyGame
-- **Video Content**: Official trailers and community reviews from YouTube
+- **Game Data**: Manual extraction from Winter Burrow gameplay
+- **Community Content**: Curated from Reddit discussions
+- **Video Content**: Official trailers and gameplay videos from YouTube
+- **Steam Images**: Official promotional materials from Steam CDN
 
 ---
 
@@ -192,34 +217,34 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 1. Follow the existing code style (enforced by Biome)
 2. Ensure TypeScript types are properly defined
-3. Test builds locally before submitting PR
-4. Update documentation for new features
+3. Test builds locally before submitting PR (`npm run build`)
+4. Run URL tests before deployment (`npm run test:urls`)
+5. Update documentation for new features
 
 ---
 
 ## 📝 License
 
-This project is a fan-made resource and is not officially affiliated with Emotional Mecha or the creators of Rue Valley. All game-related content belongs to its respective owners.
+This project is a fan-made resource and is not officially affiliated with the creators of Winter Burrow. All game-related content belongs to its respective owners.
 
-The codebase itself is licensed under MIT License - see the [LICENSE](LICENSE) file for details.
+The codebase itself is open for community contributions.
 
 ---
 
 ## 🙏 Acknowledgments
 
-- **Emotional Mecha** - For creating the amazing game Rue Valley
-- **IntoIndieGames** - For the comprehensive walkthrough data
-- **Reddit Community** - For valuable discussions and soft-lock solutions
-- **SteamSpy** - For providing public Steam statistics API
+- **Winter Burrow Developers** - For creating this cozy survival experience
+- **Reddit Community** - For valuable survival tips and soft-lock solutions
+- **YouTube Creators** - For gameplay videos and tutorials
 
 ---
 
 ## 🔗 Links
 
-- **Live Site**: [https://ruevalley.org](https://ruevalley.org)
-- **Steam Store**: [Rue Valley on Steam](https://store.steampowered.com/app/2126190/Rue_Valley/)
-- **Official Game**: [Rue Valley Website](https://ruevalley.com/)
-- **Reddit Community**: [r/RueValleyGame](https://www.reddit.com/r/RueValleyGame/)
+- **Live Site**: [https://winterburrow.info](https://winterburrow.info)
+- **Warmth Calculator**: [https://winterburrow.info/warmth-tool](https://winterburrow.info/warmth-tool)
+- **Crafting Finder**: [https://winterburrow.info/crafting](https://winterburrow.info/crafting)
+- **Beginner Guide**: [https://winterburrow.info/guides/beginner](https://winterburrow.info/guides/beginner)
 
 ---
 
@@ -227,8 +252,8 @@ The codebase itself is licensed under MIT License - see the [LICENSE](LICENSE) f
 
 For questions, suggestions, or bug reports, please:
 - Open an issue on GitHub
-- Visit our [Reddit community](https://www.reddit.com/r/RueValleyGame/)
+- Visit the community section on the website
 
 ---
 
-*Built with ❤️ for the Rue Valley community*
+*Built with ❤️ for the Winter Burrow community*

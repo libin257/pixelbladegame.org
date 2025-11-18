@@ -1,0 +1,45 @@
+{
+  "temperatures": [-15, -10, -5, 0, 5],
+  "items": [
+    {
+      "name": "Wool Sweater",
+      "warmth": 12,
+      "durations": [18, 16, 14, 12, 10]
+    },
+    {
+      "name": "Hedgehog Shawl",
+      "warmth": 18,
+      "durations": [24, 22, 20, 18, 16]
+    },
+    {
+      "name": "Thick Sweater",
+      "warmth": 15,
+      "durations": [21, 19, 17, 15, 13]
+    },
+    {
+      "name": "Fur Coat",
+      "warmth": 20,
+      "durations": [26, 24, 22, 20, 18]
+    },
+    {
+      "name": "Warm Hat",
+      "warmth": 8,
+      "durations": [14, 12, 10, 8, 6]
+    },
+    {
+      "name": "Gloves",
+      "warmth": 6,
+      "durations": [12, 10, 8, 6, 5]
+    },
+    {
+      "name": "Scarf",
+      "warmth": 10,
+      "durations": [16, 14, 12, 10, 8]
+    },
+    {
+      "name": "Winter Boots",
+      "warmth": 14,
+      "durations": [20, 18, 16, 14, 12]
+    }
+  ]
+}

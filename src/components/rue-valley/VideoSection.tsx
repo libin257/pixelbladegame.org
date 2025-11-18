@@ -28,7 +28,7 @@ export function VideoSection() {
       {featuredVideos.map((video) => (
         <div
           key={video.id}
-          className="bg-gray-800/50 backdrop-blur-sm rounded-lg overflow-hidden border border-gray-700 hover:border-[#25AB2B] transition-all"
+          className="bg-gray-800/50 backdrop-blur-sm rounded-lg overflow-hidden border border-gray-700 hover:border-[#F4B860] transition-all"
         >
           <lite-youtube
             videoid={video.id}

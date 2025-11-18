@@ -62,12 +62,71 @@ export default async function ContentPage({ params }: PageProps) {
   // Parse Markdown to HTML
   const htmlContent = await marked(content)
 
+  // Structured data for SEO
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://winterburrow.info'
+  const articleUrl = `${baseUrl}/${slug.join('/')}`
+
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: frontmatter.title,
+    description: frontmatter.description || '',
+    author: {
+      '@type': 'Organization',
+      name: 'Winter Burrow Info Team'
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Winter Burrow Info',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${baseUrl}/images/logo.png`
+      }
+    },
+    datePublished: frontmatter.date || new Date().toISOString(),
+    dateModified: frontmatter.date || new Date().toISOString(),
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': articleUrl
+    },
+    articleSection: frontmatter.category || 'Guide',
+    keywords: frontmatter.keywords || []
+  }
+
+  const breadcrumbStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: baseUrl
+      },
+      ...slug.map((segment, index) => ({
+        '@type': 'ListItem',
+        position: index + 2,
+        name: segment.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+        item: `${baseUrl}/${slug.slice(0, index + 1).join('/')}`
+      }))
+    ]
+  }
+
   return (
-    <div className="container mx-auto py-12 px-4">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+      />
+      <div className="container mx-auto py-12 px-4">
       <article className="max-w-4xl mx-auto">
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-400 mb-6">
-          <Link href="/" className="hover:text-[#25AB2B]">Home</Link>
+          <Link href="/" className="hover:text-[#F4B860]">Home</Link>
           {slug.map((segment, index) => {
             const isLast = index === slug.length - 1
             const segmentPath = '/' + slug.slice(0, index + 1).join('/')
@@ -79,7 +138,7 @@ export default async function ContentPage({ params }: PageProps) {
                 {isLast ? (
                   <span className="text-white">{displayText}</span>
                 ) : (
-                  <Link href={segmentPath} className="hover:text-[#25AB2B]">
+                  <Link href={segmentPath} className="hover:text-[#F4B860]">
                     {displayText}
                   </Link>
                 )}
@@ -91,7 +150,7 @@ export default async function ContentPage({ params }: PageProps) {
         {/* Article Header */}
         <header className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <span className="bg-[#25AB2B]/20 text-[#25AB2B] px-3 py-1 rounded-full text-sm">
+            <span className="bg-[#F4B860]/20 text-[#F4B860] px-3 py-1 rounded-full text-sm">
               {frontmatter.category || 'Guide'}
             </span>
             {frontmatter.priority && frontmatter.priority <= 10 && (
@@ -131,7 +190,7 @@ export default async function ContentPage({ params }: PageProps) {
               href={frontmatter.reference}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#25AB2B] hover:underline"
+              className="text-[#F4B860] hover:underline"
             >
               {frontmatter.reference}
             </a>
@@ -139,5 +198,6 @@ export default async function ContentPage({ params }: PageProps) {
         )}
       </article>
     </div>
+    </>
   )
 }

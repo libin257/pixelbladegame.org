@@ -1,0 +1,62 @@
+[
+  {
+    "item": "Stone Axe",
+    "materials": [["Stone", 2], ["Stick", 3], ["Fiber", 2]],
+    "station": "Handcraft",
+    "category": "tool"
+  },
+  {
+    "item": "Flint Axe",
+    "materials": [["Flint", 3], ["Stick", 2], ["Fiber", 3]],
+    "station": "Workbench",
+    "category": "tool"
+  },
+  {
+    "item": "Sandstone Pickaxe",
+    "materials": [["Sandstone", 4], ["Stick", 2], ["Fiber", 2]],
+    "station": "Handcraft",
+    "category": "tool"
+  },
+  {
+    "item": "Granite Pickaxe",
+    "materials": [["Granite", 5], ["Stick", 3], ["Iron Ore", 2]],
+    "station": "Furnace",
+    "category": "tool"
+  },
+  {
+    "item": "Warm Pie",
+    "materials": [["Flour", 2], ["Berries", 3], ["Butter", 1]],
+    "station": "Oven",
+    "category": "food"
+  },
+  {
+    "item": "Berry Soup",
+    "materials": [["Berries", 5], ["Water", 1]],
+    "station": "Pot",
+    "category": "food"
+  },
+  {
+    "item": "Wool Sweater",
+    "materials": [["Wool", 4], ["Fiber", 3]],
+    "station": "Loom",
+    "category": "clothing"
+  },
+  {
+    "item": "Wooden Chair",
+    "materials": [["Wood", 6], ["Nails", 4]],
+    "station": "Workbench",
+    "category": "furniture"
+  },
+  {
+    "item": "Campfire",
+    "materials": [["Wood", 8], ["Stone", 4]],
+    "station": "Handcraft",
+    "category": "utility"
+  },
+  {
+    "item": "Torch",
+    "materials": [["Stick", 1], ["Cloth", 1], ["Oil", 1]],
+    "station": "Handcraft",
+    "category": "light"
+  }
+]

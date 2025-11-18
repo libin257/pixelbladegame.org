@@ -1,0 +1,50 @@
+[
+  {
+    "item": "Wool Sweater",
+    "warmth": 12,
+    "category": "clothing",
+    "durations": [18, 16, 14, 12, 10]
+  },
+  {
+    "item": "Hedgehog Shawl",
+    "warmth": 18,
+    "category": "clothing",
+    "durations": [24, 22, 20, 18, 16]
+  },
+  {
+    "item": "Thick Sweater",
+    "warmth": 15,
+    "category": "clothing",
+    "durations": [21, 19, 17, 15, 13]
+  },
+  {
+    "item": "Fur Coat",
+    "warmth": 20,
+    "category": "clothing",
+    "durations": [26, 24, 22, 20, 18]
+  },
+  {
+    "item": "Warm Hat",
+    "warmth": 8,
+    "category": "accessory",
+    "durations": [14, 12, 10, 8, 6]
+  },
+  {
+    "item": "Gloves",
+    "warmth": 6,
+    "category": "accessory",
+    "durations": [12, 10, 8, 6, 5]
+  },
+  {
+    "item": "Scarf",
+    "warmth": 10,
+    "category": "accessory",
+    "durations": [16, 14, 12, 10, 8]
+  },
+  {
+    "item": "Winter Boots",
+    "warmth": 14,
+    "category": "footwear",
+    "durations": [20, 18, 16, 14, 12]
+  }
+]
