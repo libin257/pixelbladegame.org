@@ -84,6 +84,7 @@ export default function RootLayout({
 }>) {
   const gaId = process.env.NEXT_PUBLIC_GA_ID
   const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID
+  const ahrefsKey = process.env.NEXT_PUBLIC_AHREFS_KEY
 
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} dark`}>
@@ -118,6 +119,16 @@ export default function RootLayout({
               })(window, document, "clarity", "script", "${clarityId}");
             `}
           </Script>
+        )}
+
+        {/* Ahrefs Analytics */}
+        {ahrefsKey && (
+          <Script
+            src="https://analytics.ahrefs.com/analytics.js"
+            data-key={ahrefsKey}
+            async
+            strategy="afterInteractive"
+          />
         )}
 
         <Script
