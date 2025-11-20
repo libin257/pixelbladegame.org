@@ -12,34 +12,28 @@ export function Header() {
           </Link>
           <nav className="hidden md:flex gap-6">
             <Link
-              href="/codes/pixel-blade-codes"
+              href="/codes"
               className="text-gray-200 hover:text-[#F4B860] transition-colors px-3 py-2"
             >
               Codes
             </Link>
             <Link
-              href="/codes/pixel-blade-rings-codes"
+              href="/tier-list"
               className="text-gray-200 hover:text-[#F4B860] transition-colors px-3 py-2"
             >
-              Rings Codes
+              Tier List
             </Link>
             <Link
-              href="/tier-list/pixel-blade-weapon-tier-list"
+              href="/guides"
               className="text-gray-200 hover:text-[#F4B860] transition-colors px-3 py-2"
             >
-              Weapon Tier List
+              Guides
             </Link>
             <Link
-              href="/guides/pixel-blade-wiki"
+              href="/info"
               className="text-gray-200 hover:text-[#F4B860] transition-colors px-3 py-2"
             >
-              Wiki Starter
-            </Link>
-            <Link
-              href="/guides/pixel-blade-discord"
-              className="text-gray-200 hover:text-[#F4B860] transition-colors px-3 py-2"
-            >
-              Discord Hub
+              Info
             </Link>
           </nav>
         </div>
