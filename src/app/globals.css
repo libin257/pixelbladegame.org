@@ -73,3 +73,18 @@
     background: linear-gradient(135deg, #13232c 0%, #172b36 50%, #1a3a4a 100%);
   }
 }
+
+/* Fix prose strong/bold styling */
+@layer components {
+  .prose strong,
+  .prose b {
+    color: inherit;
+    font-weight: 700;
+  }
+
+  .prose-invert strong,
+  .prose-invert b {
+    color: #ffffff;
+    font-weight: 700;
+  }
+}

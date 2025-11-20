@@ -4,6 +4,10 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import matter from 'gray-matter'
 import { marked } from 'marked'
+import { ReadingProgress } from '@/components/ReadingProgress'
+import { TableOfContents } from '@/components/TableOfContents'
+import { RelatedArticles } from '@/components/RelatedArticles'
+import { ArticleCTA, FloatingCTA } from '@/components/ArticleCTA'
 
 interface PageProps {
   params: Promise<{
@@ -59,11 +63,31 @@ export default async function ContentPage({ params }: PageProps) {
 
   const { frontmatter, content } = result
 
+  // Configure marked to add IDs to headings
+  marked.use({
+    renderer: {
+      heading({ text, depth }: { text: string; depth: number }) {
+        // Generate ID from text
+        const id = String(text)
+          .toLowerCase()
+          .replace(/<[^>]*>/g, '') // Remove HTML tags
+          .replace(/[^\w\s-]/g, '') // Remove special characters
+          .replace(/\s+/g, '-') // Replace spaces with hyphens
+          .trim()
+
+        return `<h${depth} id="${id}">${text}</h${depth}>`
+      }
+    }
+  })
+
   // Parse Markdown to HTML
-  const htmlContent = await marked(content)
+  let htmlContent = await marked(content)
+
+  // Remove the first H1 from content to avoid duplication
+  htmlContent = htmlContent.replace(/<h1[^>]*>.*?<\/h1>/, '')
 
   // Structured data for SEO
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wherewindsmeetgame.net'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://pixelbladegame.org'
   const articleUrl = `${baseUrl}/${slug.join('/')}`
 
   const structuredData = {
@@ -73,11 +97,11 @@ export default async function ContentPage({ params }: PageProps) {
     description: frontmatter.description || '',
     author: {
       '@type': 'Organization',
-      name: 'Where Winds Meet Info Team'
+      name: 'Pixel Blade Info Team'
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Where Winds Meet Info',
+      name: 'Pixel Blade Info',
       logo: {
         '@type': 'ImageObject',
         url: `${baseUrl}/images/logo.png`
@@ -114,6 +138,8 @@ export default async function ContentPage({ params }: PageProps) {
 
   return (
     <>
+      <ReadingProgress />
+      <FloatingCTA />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -123,81 +149,97 @@ export default async function ContentPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
       />
       <div className="container mx-auto py-12 px-4">
-      <article className="max-w-4xl mx-auto">
-        {/* Breadcrumb */}
-        <nav className="text-sm text-gray-400 mb-6">
-          <Link href="/" className="hover:text-[#F4B860]">Home</Link>
-          {slug.map((segment, index) => {
-            const isLast = index === slug.length - 1
-            const segmentPath = '/' + slug.slice(0, index + 1).join('/')
-            const displayText = segment.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            {/* Main Content */}
+            <article className="lg:col-span-8">
+              {/* Breadcrumb */}
+              <nav className="text-sm text-gray-400 mb-6">
+                <Link href="/" className="hover:text-[#F4B860]">Home</Link>
+                {slug.map((segment, index) => {
+                  const isLast = index === slug.length - 1
+                  const segmentPath = '/' + slug.slice(0, index + 1).join('/')
+                  const displayText = segment.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
 
-            return (
-              <span key={index}>
-                {' › '}
-                {isLast ? (
-                  <span className="text-white">{displayText}</span>
-                ) : (
-                  <Link href={segmentPath} className="hover:text-[#F4B860]">
-                    {displayText}
-                  </Link>
+                  return (
+                    <span key={index}>
+                      {' › '}
+                      {isLast ? (
+                        <span className="text-white">{displayText}</span>
+                      ) : (
+                        <Link href={segmentPath} className="hover:text-[#F4B860]">
+                          {displayText}
+                        </Link>
+                      )}
+                    </span>
+                  )
+                })}
+              </nav>
+
+              {/* Article Header */}
+              <header className="mb-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="bg-[#F4B860]/20 text-[#F4B860] px-3 py-1 rounded-full text-sm font-semibold">
+                    {frontmatter.category || 'Guide'}
+                  </span>
+                  {frontmatter.priority && frontmatter.priority <= 10 && (
+                    <span className="bg-purple-500/20 text-purple-300 px-3 py-1 rounded-full text-sm">
+                      High Priority
+                    </span>
+                  )}
+                </div>
+                <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+                  {frontmatter.title}
+                </h1>
+                {frontmatter.description && (
+                  <p className="text-xl text-gray-300 leading-relaxed">
+                    {frontmatter.description}
+                  </p>
                 )}
-              </span>
-            )
-          })}
-        </nav>
+                {frontmatter.date && (
+                  <p className="text-sm text-gray-400 mt-4">
+                    Last updated: {frontmatter.date}
+                  </p>
+                )}
+              </header>
 
-        {/* Article Header */}
-        <header className="mb-8">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="bg-[#F4B860]/20 text-[#F4B860] px-3 py-1 rounded-full text-sm">
-              {frontmatter.category || 'Guide'}
-            </span>
-            {frontmatter.priority && frontmatter.priority <= 10 && (
-              <span className="bg-purple-500/20 text-purple-300 px-3 py-1 rounded-full text-sm">
-                High Priority
-              </span>
-            )}
+              {/* Article Content */}
+              <div className="prose prose-invert prose-lg max-w-none">
+                <div
+                  className="text-gray-300 leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: htmlContent }}
+                />
+              </div>
+
+              {/* External Reference */}
+              {frontmatter.reference && (
+                <div className="mt-12 p-6 bg-gray-800/50 backdrop-blur-sm rounded-lg border border-gray-700">
+                  <h3 className="text-lg font-semibold text-white mb-2">📚 External Reference</h3>
+                  <a
+                    href={frontmatter.reference}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#F4B860] hover:underline break-all"
+                  >
+                    {frontmatter.reference}
+                  </a>
+                </div>
+              )}
+
+              {/* Newsletter CTA */}
+              <ArticleCTA />
+
+              {/* Related Articles */}
+              <RelatedArticles category={slug[0]} currentSlug={slug.join('/')} />
+            </article>
+
+            {/* Sidebar - Table of Contents */}
+            <aside className="lg:col-span-4">
+              <TableOfContents />
+            </aside>
           </div>
-          <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-            {frontmatter.title}
-          </h1>
-          {frontmatter.description && (
-            <p className="text-xl text-gray-300">
-              {frontmatter.description}
-            </p>
-          )}
-          {frontmatter.date && (
-            <p className="text-sm text-gray-400 mt-4">
-              Last updated: {frontmatter.date}
-            </p>
-          )}
-        </header>
-
-        {/* Article Content */}
-        <div className="prose prose-invert prose-lg max-w-none">
-          <div
-            className="text-gray-300 leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: htmlContent }}
-          />
         </div>
-
-        {/* External Reference */}
-        {frontmatter.reference && (
-          <div className="mt-12 p-6 bg-gray-800/50 backdrop-blur-sm rounded-lg border border-gray-700">
-            <h3 className="text-lg font-semibold text-white mb-2">External Reference</h3>
-            <a
-              href={frontmatter.reference}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#F4B860] hover:underline"
-            >
-              {frontmatter.reference}
-            </a>
-          </div>
-        )}
-      </article>
-    </div>
+      </div>
     </>
   )
 }

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Where Winds Meet URL Testing Script
+# Pixel Blade URL Testing Script
 # Tests all major pages and content
 
 BASE_URL="http://localhost:3000"
@@ -15,7 +15,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 echo "=========================================="
-echo "🧪 Where Winds Meet URL Testing"
+echo "🧪 Pixel Blade URL Testing"
 echo "Base URL: $BASE_URL"
 echo "=========================================="
 echo ""

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import ClientBody from "./ClientBody";
 import Script from "next/script";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -9,6 +8,7 @@ import { Footer } from "@/components/Footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const geistMono = Geist_Mono({
@@ -18,25 +18,24 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Where Winds Meet - Complete Guide & Wiki | Wuxia RPG Tips",
-    template: "%s | Where Winds Meet Info"
+    default: "Pixel Blade Guides, Codes & Tier List | Master the Pixel Realm Fast",
+    template: "%s | Pixel Blade Info"
   },
-  description: "Master Where Winds Meet with our comprehensive guide featuring character builds, boss strategies, weapon tier lists, PC performance guides, and complete walkthroughs. Your ultimate companion for conquering the martial arts world.",
+  description: "Pixel Blade fan-hub: grab the latest working codes, see the weapon tier list & legendary drop map, and level up faster with data-driven tools.",
   keywords: [
-    "Where Winds Meet",
-    "Where Winds Meet guide",
-    "Where Winds Meet wiki",
-    "Wuxia RPG guide",
-    "character builds",
-    "boss strategies",
-    "weapon tier list",
-    "parry guide",
-    "game guide"
+    "Pixel Blade codes",
+    "Pixel Blade tier list",
+    "Roblox Pixel Blade",
+    "legendary weapons",
+    "Pixel Blade wiki",
+    "Pixel Blade rings codes",
+    "Pixel Blade guide",
+    "Pixel Blade weapons"
   ],
-  authors: [{ name: "Where Winds Meet Info Team" }],
-  creator: "Where Winds Meet Info",
-  publisher: "Where Winds Meet Info",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://wherewindsmeetgame.net'),
+  authors: [{ name: "Pixel Blade Info Team" }],
+  creator: "Pixel Blade Info",
+  publisher: "Pixel Blade Info",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://pixelbladegame.org'),
   alternates: {
     canonical: '/',
   },
@@ -44,22 +43,22 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: '/',
-    title: 'Where Winds Meet - Complete Wuxia RPG Guide & Wiki',
-    description: 'Master Where Winds Meet with our comprehensive guide featuring character builds, boss strategies, weapon tier lists, and PC performance guides.',
-    siteName: 'Where Winds Meet Info',
+    title: 'Pixel Blade Guides, Codes & Tier List | Master the Pixel Realm Fast',
+    description: 'Pixel Blade fan-hub: grab the latest working codes, see the weapon tier list & legendary drop map, and level up faster with data-driven tools.',
+    siteName: 'Pixel Blade Info',
     images: [
       {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Where Winds Meet Guide',
+        alt: 'Pixel Blade Guide',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Where Winds Meet - Complete Wuxia RPG Guide & Wiki',
-    description: 'Master Where Winds Meet with character builds, boss strategies, weapon tier lists, and performance guides.',
+    title: 'Pixel Blade Guides, Codes & Tier List | Master the Pixel Realm Fast',
+    description: 'Pixel Blade fan-hub: grab the latest working codes, see the weapon tier list & legendary drop map, and level up faster with data-driven tools.',
     images: ['/images/og-image.jpg'],
   },
   robots: {
@@ -127,21 +126,19 @@ export default function RootLayout({
         />
       </head>
       <body suppressHydrationWarning className="antialiased">
-        <ClientBody>
-          <div
-            className="relative min-h-screen bg-cover bg-center bg-fixed"
-            style={{ backgroundImage: 'url(/images/backgrounds/winter-night.png)' }}
-          >
-            <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
-            <div className="relative z-10 flex flex-col min-h-screen">
-              <Header />
-              <main className="flex-1">
-                {children}
-              </main>
-              <Footer />
-            </div>
+        <div
+          className="relative min-h-screen bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: 'url(/images/backgrounds/backend.png)' }}
+        >
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
+          <div className="relative z-10 flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-1">
+              {children}
+            </main>
+            <Footer />
           </div>
-        </ClientBody>
+        </div>
       </body>
     </html>
   );

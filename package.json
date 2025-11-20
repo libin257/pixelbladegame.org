@@ -1,5 +1,5 @@
 {
-  "name": "winter-burrow-info",
+  "name": "pixel-blade-info",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -11,17 +11,12 @@
     "format": "bunx biome format --write",
     "csv:json": "node scripts/csv-to-json.js",
     "generate:mdx": "node scripts/generate-mdx-from-csv.js",
-    "generate:articles": "node scripts/generate-articles-from-xlsx.js",
     "preview:xlsx": "node scripts/preview-xlsx.js",
     "test:urls": "bash scripts/test-urls.sh",
     "fix:paths": "bash scripts/fix-mdx-paths.sh",
     "fix:markdown": "bash scripts/fix-markdown-wrapper.sh",
-    "fetch:builds": "node scripts/fetch-builds.cjs",
-    "fetch:images": "node scripts/fetch-images.cjs",
-    "fetch:youtube": "node scripts/fetch-youtube.cjs",
-    "fetch:reddit": "node scripts/fetch-reddit.cjs",
-    "fetch:sheets": "node scripts/fetch-sheets.cjs",
-    "fetch:all": "bash scripts/build-all-data.sh"
+    "fetch:codes": "node scripts/fetch-codes.cjs",
+    "fetch:weapon-tiers": "node scripts/fetch-weapon-tiers.cjs"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",

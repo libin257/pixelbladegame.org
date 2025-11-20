@@ -1,23 +1,21 @@
-# Where Winds Meet Info
+# Pixel Blade Info
 
-> Your complete Wuxia RPG companion for *Where Winds Meet* - Interactive build tools, boss guides, and comprehensive walkthroughs for mastering the martial arts world.
+> Your complete Roblox RPG companion for *Pixel Blade* - Working codes, weapon tier lists, and comprehensive guides for mastering the pixel realm.
 
-🌐 **Live Site**: [https://wherewindsmeetgame.net](https://wherewindsmeetgame.net)
+🌐 **Live Site**: [https://pixelbladegame.org](https://pixelbladegame.org)
 
 ---
 
 ## 📖 About This Project
 
-Where Winds Meet Info is a comprehensive fan-made guide website dedicated to helping players master *Where Winds Meet*, the open-world Wuxia action RPG. The site features:
+Pixel Blade Info is a comprehensive fan-made guide website dedicated to helping players master *Pixel Blade*, the Roblox action RPG. The site features:
 
-- ✅ **Build Popularity Rankings** - Real-time community voting data from Fextralife Wiki
-- ✅ **Quick Build Recommender** - 2-step tool to find the perfect build for your playstyle
-- ✅ **Boss Strategy Guides** - Complete guides for all major boss encounters
+- ✅ **Working Codes** - Latest active codes for free rewards
 - ✅ **Weapon Tier Lists** - Community-approved rankings for all weapon types
-- ✅ **PC Performance Guides** - Optimization tips for smooth 60 FPS gameplay
-- ✅ **78+ SEO-optimized pages** - Covering builds, bosses, guides, news, PC settings, and more
-- ✅ **System Requirements Checker** - Verify if your PC can run the game
-- ✅ **Release Date Countdown** - Global launch time tracker
+- ✅ **Interactive Code Tool** - Easy copy-paste code interface
+- ✅ **Strategy Guides** - Tips for progression and gameplay
+- ✅ **30+ SEO-optimized pages** - Covering codes, tier lists, guides, and game info
+- ✅ **Regular Updates** - Fresh codes and tier list updates
 
 ---
 
@@ -26,9 +24,8 @@ Where Winds Meet Info is a comprehensive fan-made guide website dedicated to hel
 - **Framework**: Next.js 15 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
-- **Interactive Tools**: Build popularity chart & recommendation system
-- **Data Source**: Fextralife Wiki API
 - **Content**: MDX + gray-matter
+- **Analytics**: Google Analytics 4 + Microsoft Clarity
 - **Deployment**: Vercel
 
 ---
@@ -44,8 +41,8 @@ Where Winds Meet Info is a comprehensive fan-made guide website dedicated to hel
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/wherewindsmeetgame.net.git
-cd wherewindsmeetgame.net
+git clone https://github.com/yourusername/pixel-blade-info.git
+cd pixel-blade-info
 
 # Install dependencies
 npm install
@@ -54,7 +51,7 @@ npm install
 npm run dev
 ```
 
-Visit `http://localhost:3000` to see the site.
+Visit `http://localhost:3002` to see the site.
 
 ### Build for Production
 
@@ -73,46 +70,40 @@ npm run start
 ```
 ├── public/
 │   ├── data/
-│   │   └── build_popularity.json    # Community build voting data
+│   │   ├── codes.json              # Active codes data
+│   │   └── weapon_tiers.json       # Weapon tier rankings
 │   └── images/
-│       ├── backgrounds/             # Site background images
-│       └── hero.png                 # Homepage hero image
+│       ├── backgrounds/            # Site background images
+│       └── logo.png                # Site logo
 ├── src/
 │   ├── app/
-│   │   ├── page.tsx                 # Homepage with build tools
-│   │   ├── [...slug]/page.tsx       # Dynamic MDX page routes
-│   │   ├── bosses/page.tsx          # Boss list page
-│   │   ├── builds/page.tsx          # Builds list page
-│   │   ├── guides/page.tsx          # Guides list page
-│   │   ├── news/page.tsx            # News list page
-│   │   ├── pc/page.tsx              # PC guides list page
-│   │   ├── system/page.tsx          # System info list page
-│   │   └── sitemap.xml/route.ts     # Dynamic sitemap generator
+│   │   ├── page.tsx                # Homepage
+│   │   ├── [...slug]/page.tsx      # Dynamic MDX page routes
+│   │   ├── tools/
+│   │   │   ├── codes/page.tsx      # Interactive codes tool
+│   │   │   └── weapon-tiers/page.tsx # Weapon tier tool
+│   │   ├── codes/page.tsx          # Codes list page
+│   │   ├── guides/page.tsx         # Guides list page
+│   │   ├── tier-list/page.tsx      # Tier lists page
+│   │   └── sitemap.xml/route.ts    # Dynamic sitemap generator
 │   ├── components/
-│   │   ├── Header.tsx               # Site navigation
-│   │   ├── Footer.tsx               # Site footer
-│   │   └── builds/
-│   │       ├── BuildBarChart.tsx    # Build popularity rankings
-│   │       └── BuildPicker.tsx      # Quick build recommender
-│   ├── content/                     # 78+ MDX content files
-│   │   ├── bosses/                  # Boss strategy guides
-│   │   ├── builds/                  # Character build guides
-│   │   ├── guides/                  # Game guides & tutorials
-│   │   ├── news/                    # News & announcements
-│   │   ├── pc/                      # PC performance guides
-│   │   ├── store/                   # Store & editions info
-│   │   ├── support/                 # Support & help
-│   │   ├── system/                  # System requirements
-│   │   ├── media/                   # Media & videos
-│   │   └── community/               # Community resources
+│   │   ├── Header.tsx              # Site navigation
+│   │   ├── Footer.tsx              # Site footer
+│   │   ├── ReadingProgress.tsx     # Article reading progress
+│   │   ├── TableOfContents.tsx     # Auto-generated TOC
+│   │   ├── RelatedArticles.tsx     # Related content
+│   │   └── ArticleCTA.tsx          # Newsletter CTAs
+│   ├── content/                    # 30+ MDX content files
+│   │   ├── codes/                  # Codes guides
+│   │   ├── guides/                 # Game guides & tutorials
+│   │   ├── info/                   # Game information
+│   │   └── tier-list/              # Tier list rankings
 ├── scripts/
-│   ├── create-mdx-files.cjs         # Batch MDX file generator
-│   ├── fetch-builds.cjs             # Fextralife data fetcher
-│   └── test-urls.sh                 # URL accessibility testing
+│   ├── fetch-codes.cjs             # Codes data fetcher
+│   ├── fetch-weapon-tiers.cjs      # Weapon tier data fetcher
+│   └── test-urls.sh                # URL accessibility testing
 └── tools/
-    └── demand/                      # Project requirements & assets
-        ├── test2.md                 # URL structure definition
-        └── hero.png                 # Homepage hero image
+    └── demand/                     # Project requirements
 ```
 
 ---
@@ -130,7 +121,8 @@ npm run build                # Build for production
 npm run start                # Start production server
 
 # Data Generation
-npm run fetch:builds         # Fetch build data from Fextralife
+npm run fetch:codes          # Fetch latest codes data
+npm run fetch:weapon-tiers   # Fetch weapon tier rankings
 
 # Testing
 npm run test:urls            # Test all page URLs for accessibility
@@ -140,53 +132,53 @@ npm run test:urls            # Test all page URLs for accessibility
 
 ## 🎨 Key Features
 
-### 1. **Build Popularity Rankings**
+### 1. **Interactive Codes Tool**
 
-Interactive visualization showing:
-- Top 8 most popular builds by community votes
-- Role indicators (DPS ⚔️, Tank 🛡️, Healer 💚)
-- Weapon categories with color coding
-- Real-time data from Fextralife Wiki
+Easy-to-use interface featuring:
+- One-click copy codes
+- Active/expired status indicators
+- Reward descriptions
+- Regular updates
 
-Uses JSON data fetched from the Fextralife API with fallback mock data.
+### 2. **Weapon Tier Lists**
 
-### 2. **Quick Build Recommender**
+Comprehensive rankings showing:
+- S+ to C tier classifications
+- Detailed weapon stats
+- Meta analysis
+- Community insights
 
-2-step recommendation system:
-- Step 1: Select your weapon
-- Step 2: Choose your playstyle (DPS/Tank/Healer)
-- Instantly get top 3 community-approved builds
-- Detailed descriptions and vote counts
-
-Powered by client-side filtering with instant results.
-
-### 3. **78+ SEO-Optimized Pages**
+### 3. **30+ SEO-Optimized Pages**
 
 Automatically generated MDX pages covering:
-- Character build guides for all weapons
-- Boss strategy guides with weaknesses & drops
-- Comprehensive game guides
-- PC performance optimization
-- System requirements & technical info
-- News & release information
+- All active codes with detailed guides
+- Weapon tier lists and rankings
+- Comprehensive gameplay guides
+- Game information and tips
 
 Each page includes:
-- Structured frontmatter (title, description, keywords, priority)
+- Structured frontmatter (title, description, keywords)
 - Responsive layout with dark theme
 - Breadcrumb navigation
+- Reading progress indicator
+- Table of contents
+- Related articles
 - SEO metadata and OpenGraph tags
 
 ### 4. **Dynamic Sitemap**
 
-Automatically generates `sitemap.xml` with all 78+ pages, optimized for search engines and updated on every build.
+Automatically generates `sitemap.xml` with all 30+ pages, optimized for search engines and updated on every build.
 
 ---
 
-## 📊 Data Sources
+## 📊 Article Optimization Features
 
-- **Build Data**: Fextralife Wiki API (with fallback mock data)
-- **Game Information**: Official sources and community research
-- **Community Content**: Curated guides and strategies
+- **Reading Progress Bar** - Visual scroll indicator
+- **Table of Contents** - Auto-generated from H2/H3 headings
+- **Related Articles** - Category-based recommendations
+- **Newsletter CTAs** - Multiple conversion points
+- **Floating Action Button** - Quick access to codes tool
+- **Scroll Depth Tracking** - GA4 engagement metrics (25%, 50%, 75%, 90%)
 
 ---
 
@@ -206,7 +198,7 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 ## 📝 License
 
-This project is a fan-made resource and is not officially affiliated with the creators of Where Winds Meet. All game-related content belongs to its respective owners.
+This project is a fan-made resource and is not officially affiliated with the creators of Pixel Blade. All game-related content belongs to its respective owners.
 
 The codebase itself is open for community contributions.
 
@@ -214,18 +206,18 @@ The codebase itself is open for community contributions.
 
 ## 🙏 Acknowledgments
 
-- **Where Winds Meet Developers** - For creating this epic Wuxia RPG
-- **Fextralife Wiki** - For community build data and guides
-- **Community Contributors** - For strategies and feedback
+- **Pixel Blade Developers** - For creating this awesome Roblox RPG
+- **Community Contributors** - For strategies, codes, and feedback
+- **Roblox Community** - For ongoing support
 
 ---
 
 ## 🔗 Links
 
-- **Live Site**: [https://wherewindsmeetgame.net](https://wherewindsmeetgame.net)
-- **Build Tier List**: [https://wherewindsmeetgame.net/builds/best-builds](https://wherewindsmeetgame.net/builds/best-builds)
-- **Boss Guides**: [https://wherewindsmeetgame.net/bosses](https://wherewindsmeetgame.net/bosses)
-- **Getting Started**: [https://wherewindsmeetgame.net/guides/class-overview](https://wherewindsmeetgame.net/guides/class-overview)
+- **Live Site**: [https://pixelbladegame.org](https://pixelbladegame.org)
+- **Working Codes**: [https://pixelbladegame.org/codes/pixel-blade-codes](https://pixelbladegame.org/codes/pixel-blade-codes)
+- **Weapon Tier List**: [https://pixelbladegame.org/tier-list/pixel-blade-weapon-tier-list](https://pixelbladegame.org/tier-list/pixel-blade-weapon-tier-list)
+- **Codes Tool**: [https://pixelbladegame.org/tools/codes](https://pixelbladegame.org/tools/codes)
 
 ---
 
@@ -237,4 +229,4 @@ For questions, suggestions, or bug reports, please:
 
 ---
 
-*Built with ❤️ for the Where Winds Meet community*
+*Built with ❤️ for the Pixel Blade community*

@@ -1,0 +1,50 @@
+{
+  "updated": "2025-11-20T02:16:38.497Z",
+  "source": "Pixel Blade Wiki - Tierlist",
+  "url": "https://pixelblade.fandom.com/wiki/Tierlist",
+  "tiers": [
+    {
+      "tier": "S+",
+      "weapons": [
+        "Blackstar",
+        "Void Reaver"
+      ],
+      "color": "#FF4444"
+    },
+    {
+      "tier": "S",
+      "weapons": [
+        "Sky Watcher",
+        "Stellar",
+        "Celestial Blade"
+      ],
+      "color": "#FF8844"
+    },
+    {
+      "tier": "A",
+      "weapons": [
+        "Crimson Edge",
+        "Thunder Fang",
+        "Frost Bite"
+      ],
+      "color": "#FFAA44"
+    },
+    {
+      "tier": "B",
+      "weapons": [
+        "Iron Sword",
+        "Steel Blade",
+        "Bronze Spear"
+      ],
+      "color": "#44FF44"
+    },
+    {
+      "tier": "C",
+      "weapons": [
+        "Wooden Sword",
+        "Rusty Blade"
+      ],
+      "color": "#4444FF"
+    }
+  ]
+}

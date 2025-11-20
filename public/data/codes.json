@@ -1,0 +1,71 @@
+{
+  "updated": "2025-11-20T02:16:44.836Z",
+  "sources": [
+    "Pixel Blade Wiki - Codes",
+    "ProGameGuides",
+    "Beebom"
+  ],
+  "platforms": [
+    "ROBLOX",
+    "Android",
+    "iOS"
+  ],
+  "codes": [
+    {
+      "code": "350K",
+      "reward": "Free rewards",
+      "status": "active",
+      "platform": "ALL",
+      "expiresAt": null
+    },
+    {
+      "code": "300K",
+      "reward": "Free rewards",
+      "status": "active",
+      "platform": "ALL",
+      "expiresAt": null
+    },
+    {
+      "code": "250K",
+      "reward": "Free rewards",
+      "status": "active",
+      "platform": "ALL",
+      "expiresAt": null
+    },
+    {
+      "code": "RELEASE",
+      "reward": "Launch rewards",
+      "status": "active",
+      "platform": "ALL",
+      "expiresAt": null
+    },
+    {
+      "code": "UPDATE1",
+      "reward": "Update rewards",
+      "status": "active",
+      "platform": "ALL",
+      "expiresAt": null
+    },
+    {
+      "code": "RINGS",
+      "reward": "Power rings",
+      "status": "active",
+      "platform": "ALL",
+      "expiresAt": null
+    },
+    {
+      "code": "LEGENDARY",
+      "reward": "Legendary weapon boost",
+      "status": "active",
+      "platform": "ALL",
+      "expiresAt": null
+    },
+    {
+      "code": "EARLYACCESS",
+      "reward": "Early access rewards",
+      "status": "active",
+      "platform": "ALL",
+      "expiresAt": null
+    }
+  ]
+}
