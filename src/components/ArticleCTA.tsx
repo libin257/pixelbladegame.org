@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 
 export function ArticleCTA() {
@@ -71,18 +71,121 @@ export function ArticleCTA() {
 }
 
 export function FloatingCTA() {
+  const [position, setPosition] = useState({ x: 0, y: 0 })
+  const [isDragging, setIsDragging] = useState(false)
+  const dragStartRef = useRef({ x: 0, y: 0, startX: 0, startY: 0, moved: 0 })
+  const linkRef = useRef<HTMLAnchorElement>(null)
+
+  // Load position from localStorage on mount
+  useEffect(() => {
+    const saved = localStorage.getItem('floating-cta-position')
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved)
+        setPosition(parsed)
+      } catch (e) {
+        // Invalid saved position, use default
+      }
+    }
+  }, [])
+
+  // Save position to localStorage
+  const savePosition = (pos: { x: number; y: number }) => {
+    localStorage.setItem('floating-cta-position', JSON.stringify(pos))
+  }
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true)
+    dragStartRef.current = {
+      x: e.clientX,
+      y: e.clientY,
+      startX: position.x,
+      startY: position.y,
+      moved: 0
+    }
+    e.preventDefault()
+  }
+
+  const handleMouseMove = (e: MouseEvent) => {
+    if (!isDragging) return
+
+    const dx = e.clientX - dragStartRef.current.x
+    const dy = e.clientY - dragStartRef.current.y
+
+    dragStartRef.current.moved = Math.abs(dx) + Math.abs(dy)
+
+    // Calculate new position with boundary constraints
+    const newX = dragStartRef.current.startX + dx
+    const newY = dragStartRef.current.startY + dy
+
+    // Get window dimensions for boundary check
+    const maxX = window.innerWidth - 200 // button width ~200px
+    const maxY = window.innerHeight - 200 // button height ~200px
+    const minX = -100
+    const minY = -100
+
+    setPosition({
+      x: Math.max(minX, Math.min(newX, maxX)),
+      y: Math.max(minY, Math.min(newY, maxY))
+    })
+  }
+
+  const handleMouseUp = (e: MouseEvent) => {
+    if (dragStartRef.current.moved > 5) {
+      // Was dragging, save position
+      savePosition(position)
+      e.preventDefault()
+      e.stopPropagation()
+    }
+    setIsDragging(false)
+  }
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (dragStartRef.current.moved > 5) {
+      // Was dragging, prevent click
+      e.preventDefault()
+      e.stopPropagation()
+      return
+    }
+
+    // Track click event
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'floating_cta_click', {
+        location: 'article_sidebar'
+      })
+    }
+  }
+
+  // Add/remove global event listeners for dragging
+  useEffect(() => {
+    if (isDragging) {
+      document.addEventListener('mousemove', handleMouseMove)
+      document.addEventListener('mouseup', handleMouseUp)
+      return () => {
+        document.removeEventListener('mousemove', handleMouseMove)
+        document.removeEventListener('mouseup', handleMouseUp)
+      }
+    }
+  }, [isDragging, position])
+
   return (
-    <div className="hidden xl:block fixed right-8 top-1/2 -translate-y-1/2 z-40">
+    <div
+      className="hidden xl:block fixed right-8 top-1/2 -translate-y-1/2 z-40"
+      style={{
+        transform: `translate(${position.x}px, ${position.y}px) translateY(-50%)`,
+        cursor: isDragging ? 'grabbing' : 'grab',
+        transition: isDragging ? 'none' : 'transform 0.2s ease-out'
+      }}
+      onMouseDown={handleMouseDown}
+    >
       <Link
+        ref={linkRef}
         href="/tools/codes"
-        className="flex flex-col items-center gap-2 bg-gradient-to-br from-[#F4B860] to-[#D99B3C] text-black px-6 py-4 rounded-lg shadow-2xl hover:shadow-[#F4B860]/50 transition-all hover:scale-105"
-        onClick={() => {
-          if (typeof window.gtag !== 'undefined') {
-            window.gtag('event', 'floating_cta_click', {
-              location: 'article_sidebar'
-            })
-          }
-        }}
+        className={`flex flex-col items-center gap-2 bg-gradient-to-br from-[#F4B860] to-[#D99B3C] text-black px-6 py-4 rounded-lg shadow-2xl hover:shadow-[#F4B860]/50 transition-all ${
+          isDragging ? 'scale-105 shadow-[#F4B860]/70' : 'hover:scale-105'
+        }`}
+        onClick={handleClick}
+        draggable={false}
       >
         <span className="text-3xl">🎁</span>
         <span className="font-bold text-sm text-center leading-tight">
