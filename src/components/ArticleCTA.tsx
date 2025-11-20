@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import { Fireworks } from './Fireworks'
 
 export function ArticleCTA() {
   const [email, setEmail] = useState('')
@@ -73,6 +74,9 @@ export function ArticleCTA() {
 export function FloatingCTA() {
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [isDragging, setIsDragging] = useState(false)
+  const [showCelebration, setShowCelebration] = useState(false)
+  const [showFireworks, setShowFireworks] = useState(false)
+  const [isNavigating, setIsNavigating] = useState(false)
   const dragStartRef = useRef({ x: 0, y: 0, startX: 0, startY: 0, moved: 0 })
   const linkRef = useRef<HTMLAnchorElement>(null)
 
@@ -148,12 +152,30 @@ export function FloatingCTA() {
       return
     }
 
+    // Prevent default navigation
+    e.preventDefault()
+
+    // Show celebration and fireworks
+    setShowCelebration(true)
+    setShowFireworks(true)
+    setIsNavigating(true)
+
     // Track click event
     if (typeof window.gtag !== 'undefined') {
       window.gtag('event', 'floating_cta_click', {
         location: 'article_sidebar'
       })
     }
+
+    // Navigate after 1 second
+    setTimeout(() => {
+      if (linkRef.current) {
+        window.location.href = linkRef.current.href
+      }
+    }, 1000)
+
+    // Hide celebration card after 900ms (before navigation)
+    setTimeout(() => setShowCelebration(false), 900)
   }
 
   // Add/remove global event listeners for dragging
@@ -169,29 +191,52 @@ export function FloatingCTA() {
   }, [isDragging, position])
 
   return (
-    <div
-      className="hidden xl:block fixed right-8 top-1/2 -translate-y-1/2 z-40"
-      style={{
-        transform: `translate(${position.x}px, ${position.y}px) translateY(-50%)`,
-        cursor: isDragging ? 'grabbing' : 'grab',
-        transition: isDragging ? 'none' : 'transform 0.2s ease-out'
-      }}
-      onMouseDown={handleMouseDown}
-    >
-      <Link
-        ref={linkRef}
-        href="/tools/codes"
-        className={`flex flex-col items-center gap-2 bg-gradient-to-br from-[#F4B860] to-[#D99B3C] text-black px-6 py-4 rounded-lg shadow-2xl hover:shadow-[#F4B860]/50 transition-all ${
-          isDragging ? 'scale-105 shadow-[#F4B860]/70' : 'hover:scale-105'
-        }`}
-        onClick={handleClick}
-        draggable={false}
+    <>
+      <div
+        className="hidden xl:block fixed right-8 top-1/2 -translate-y-1/2 z-40"
+        style={{
+          transform: `translate(${position.x}px, ${position.y}px) translateY(-50%)`,
+          cursor: isDragging ? 'grabbing' : 'grab',
+          transition: isDragging ? 'none' : 'transform 0.2s ease-out'
+        }}
+        onMouseDown={handleMouseDown}
       >
-        <span className="text-3xl">🎁</span>
-        <span className="font-bold text-sm text-center leading-tight">
-          Get Working<br />Codes Now
-        </span>
-      </Link>
-    </div>
+        <Link
+          ref={linkRef}
+          href="/tools/codes"
+          className={`flex flex-col items-center gap-2 bg-gradient-to-br from-[#F4B860] to-[#D99B3C] text-black px-6 py-4 rounded-lg shadow-2xl hover:shadow-[#F4B860]/50 transition-all ${
+            isDragging ? 'scale-105 shadow-[#F4B860]/70' : 'hover:scale-105'
+          }`}
+          onClick={handleClick}
+          draggable={false}
+        >
+          <span className="text-3xl">🎁</span>
+          <span className="font-bold text-sm text-center leading-tight">
+            Get Working<br />Codes Now
+          </span>
+        </Link>
+      </div>
+
+      {/* Fireworks Effect */}
+      {showFireworks && (
+        <Fireworks onComplete={() => setShowFireworks(false)} duration={1500} />
+      )}
+
+      {/* Celebration Message */}
+      {showCelebration && (
+        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[9999] animate-bounce">
+          <div className="bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 rounded-2xl px-8 py-6 border-4 border-white shadow-2xl min-w-[320px]">
+            <div className="flex items-center justify-center gap-4">
+              <span className="text-4xl animate-spin">🎉</span>
+              <div className="text-center">
+                <p className="text-xl font-bold text-white mb-1">Congratulations!</p>
+                <p className="text-sm text-white">Unlock Amazing Codes ⚔️</p>
+              </div>
+              <span className="text-4xl animate-pulse">🎁</span>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   )
 }

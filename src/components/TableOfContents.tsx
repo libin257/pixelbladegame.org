@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
 interface Heading {
@@ -12,55 +13,82 @@ interface Heading {
 export function TableOfContents() {
   const [headings, setHeadings] = useState<Heading[]>([])
   const [activeId, setActiveId] = useState<string>('')
+  const pathname = usePathname()
 
   useEffect(() => {
-    // Extract headings from the article
-    const article = document.querySelector('article')
-    if (!article) return
+    let observer: IntersectionObserver | null = null
 
-    const headingElements = article.querySelectorAll('h2, h3')
-    const headingData: Heading[] = []
-
-    headingElements.forEach((heading, index) => {
-      const text = heading.textContent || ''
-      const level = parseInt(heading.tagName[1])
-
-      // Create ID from text if it doesn't exist
-      if (!heading.id) {
-        heading.id = `heading-${index}`
+    const extractHeadings = () => {
+      const article = document.querySelector('article')
+      if (!article) {
+        // DOM not ready, retry after 100ms
+        setTimeout(extractHeadings, 100)
+        return
       }
 
-      headingData.push({
-        id: heading.id,
-        text,
-        level
-      })
-    })
+      const headingElements = article.querySelectorAll('h2, h3')
+      if (headingElements.length === 0) {
+        // Headings not rendered yet, retry after 100ms
+        setTimeout(extractHeadings, 100)
+        return
+      }
 
-    setHeadings(headingData)
+      // Extract headings data
+      const headingData: Heading[] = []
+      headingElements.forEach((heading, index) => {
+        const text = heading.textContent || ''
+        const level = parseInt(heading.tagName[1])
 
-    // Intersection Observer for active heading
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id)
-          }
+        // Create ID from text if it doesn't exist
+        if (!heading.id) {
+          heading.id = `heading-${index}`
+        }
+
+        headingData.push({
+          id: heading.id,
+          text,
+          level
         })
-      },
-      { rootMargin: '-80px 0px -80% 0px' }
-    )
+      })
 
-    headingElements.forEach((heading) => {
-      observer.observe(heading)
-    })
+      setHeadings(headingData)
 
-    return () => {
+      // Clean up old observer
+      if (observer) {
+        observer.disconnect()
+      }
+
+      // Create new Intersection Observer
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setActiveId(entry.target.id)
+            }
+          })
+        },
+        { rootMargin: '-80px 0px -80% 0px' }
+      )
+
+      // Observe all headings
       headingElements.forEach((heading) => {
-        observer.unobserve(heading)
+        observer?.observe(heading)
       })
     }
-  }, [])
+
+    // Reset state when route changes
+    setHeadings([])
+    setActiveId('')
+    extractHeadings()
+
+    // Cleanup function
+    return () => {
+      if (observer) {
+        observer.disconnect()
+        observer = null
+      }
+    }
+  }, [pathname])
 
   if (headings.length === 0) return null
 
