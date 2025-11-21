@@ -36,7 +36,9 @@ export function TableOfContents() {
       // Extract headings data
       const headingData: Heading[] = []
       headingElements.forEach((heading, index) => {
-        const text = heading.textContent || ''
+        // Clean text: remove ** markdown syntax and trim
+        const rawText = heading.textContent || ''
+        const text = rawText.replace(/\*\*/g, '').trim()
         const level = parseInt(heading.tagName[1])
 
         // Create ID from text if it doesn't exist
@@ -93,7 +95,7 @@ export function TableOfContents() {
   if (headings.length === 0) return null
 
   return (
-    <nav className="sticky top-24 hidden lg:block">
+    <nav className="sticky top-24 hidden lg:block ml-auto">
       <div className="bg-gradient-to-br from-[#1C162D] to-[#0D0A16] rounded-lg p-6 border border-gray-700">
         <h4 className="text-sm font-semibold text-[#F4B860] mb-4 uppercase tracking-wide">
           On This Page
